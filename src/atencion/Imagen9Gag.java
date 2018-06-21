@@ -18,7 +18,7 @@ public class Imagen9Gag implements Atencion {
 		int encontrado = mensaje.indexOf(clave);
 		
 		if(encontrado != -1) {
-			ImagenGag ig = new ImagenGag();
+			ImagenGag ig = new ImagenGag(new PostMock());
 			return ig.getPost();
 		} else
 			return siguiente.atender(mensaje, nombreAsistente, nombreUsuario);

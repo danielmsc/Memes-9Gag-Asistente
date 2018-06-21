@@ -8,12 +8,12 @@ import atencion.ChuckNorris;
 import atencion.Clima;
 import atencion.DatoTemporario;
 import atencion.Imagen9Gag;
+import atencion.ImagenMeme;
 import atencion.Juego;
 import atencion.LeyesRobotica;
 import atencion.Saludo;
 import atencion.SinSentido;
 import imagen.ClienteGUI;
-import imagen.Meme;
 
 import java.text.Normalizer;
 
@@ -40,7 +40,7 @@ public class Asistente {
 		atenciones[4] = new CambioDeUnidades();
 		atenciones[5] = new LeyesRobotica();
 		atenciones[6] = new ChuckNorris();
-		atenciones[7] = new Meme();
+		atenciones[7] = new ImagenMeme();
 		atenciones[8] = new Clima();
 		atenciones[9] = new DatoTemporario();
 		atenciones[10] = new Imagen9Gag();
