@@ -62,6 +62,8 @@ public class ActualPost extends PostGetter {
 				titulo = titulo.replaceAll("&rsquo;", "'");
 			if(titulo.contains("&acute;"))
 				titulo = titulo.replaceAll("&acute;", "'");
+			if(titulo.contains("&quot;"))
+				titulo = titulo.replaceAll("&quot;", "\"");
 			posteos.add(new Post(titulo, matcher.group(1)));
 		}
 	}

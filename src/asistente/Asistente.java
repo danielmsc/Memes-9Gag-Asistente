@@ -7,10 +7,12 @@ import atencion.CambioDeUnidades;
 import atencion.ChuckNorris;
 import atencion.Clima;
 import atencion.DatoTemporario;
+import atencion.Imagen9Gag;
 import atencion.Juego;
 import atencion.LeyesRobotica;
 import atencion.Saludo;
 import atencion.SinSentido;
+import imagen.ClienteGUI;
 import imagen.Meme;
 
 import java.text.Normalizer;
@@ -19,16 +21,18 @@ public class Asistente {
 
 	private String nombre;
 	private Atencion[] atenciones;
+	private ClienteGUI ventana;
 
 	public final static String USUARIO = "@delucas";
 
 	public Asistente(String nombre) {
 		this.nombre = nombre;
+		this.ventana = new ClienteGUI("Test");
 		asignarCadenaDeAtencion();
 	}
 	
 	public void asignarCadenaDeAtencion() {
-		atenciones = new Atencion[11];
+		atenciones = new Atencion[12];
 		atenciones[0] = new Saludo();
 		atenciones[1] = new Agradecimiento();
 		atenciones[2] = new Calculo();
@@ -39,7 +43,8 @@ public class Asistente {
 		atenciones[7] = new Meme();
 		atenciones[8] = new Clima();
 		atenciones[9] = new DatoTemporario();
-		atenciones[10] = new SinSentido();
+		atenciones[10] = new Imagen9Gag();
+		atenciones[11] = new SinSentido();
 		
 		atenciones[0].establecerSiguiente(atenciones[1]);
 		atenciones[1].establecerSiguiente(atenciones[2]);
@@ -51,6 +56,7 @@ public class Asistente {
 		atenciones[7].establecerSiguiente(atenciones[8]);
 		atenciones[8].establecerSiguiente(atenciones[9]);
 		atenciones[9].establecerSiguiente(atenciones[10]);
+		atenciones[10].establecerSiguiente(atenciones[11]);
 
 	}
 
@@ -68,10 +74,17 @@ public class Asistente {
 		System.out.println(respuesta);
 		
 		respuesta = asistente.escuchar("@jenkins take my money");
-		System.out.println(respuesta);
+		asistente.ventana.imprimirImagen(respuesta);
+		//System.out.println(respuesta);
 		
 		respuesta = asistente.escuchar("@jenkins quiero saber el clima de San Justo");
-		System.out.println(respuesta);
+		asistente.ventana.imprimir(respuesta);
+		
+		respuesta = asistente.escuchar("@jenkins quiero una imagen de 9gag");
+		String[] respuestas = respuesta.split("\\|");
+		asistente.ventana.imprimirImagen(respuestas[1]);
+		asistente.ventana.imprimir(respuestas[0]);
+		
 	}
 }
 

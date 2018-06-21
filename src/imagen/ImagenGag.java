@@ -12,8 +12,12 @@ public class ImagenGag {
 		this.pg = pg;
 	}
 	
-	public Post getPost() {
-		return pg.getPost();
+	public String getPost() {
+		Post p = pg.getPost();
+		String respuesta = p.getTitulo() + "|" + p.getLink();
+		//System.out.println(respuesta);
+		
+		return respuesta;
 	}
 	
 }

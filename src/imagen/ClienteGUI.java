@@ -1,6 +1,7 @@
 package imagen;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
 import java.awt.EventQueue;
@@ -9,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -60,6 +62,7 @@ public class ClienteGUI {
 		frame.setResizable(false); 							//desactivo el maximizar
 		
 		mensajesChat = new JTextPane();
+		mensajesChat.setLayout(new BoxLayout(mensajesChat, BoxLayout.Y_AXIS));
 		mensajesChat.setEditable(false);
 		mensajesChat.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		mensajesChat.setBounds(12, 13, 970, 604);
@@ -110,7 +113,10 @@ public class ClienteGUI {
 	}
 	
 	public void imprimirImagen(String link) {
-		mensajesChat.insertIcon(getImagen(link));
+		JLabel label = new JLabel(getImagen(link));
+		//mensajesChat.insertIcon(getImagen(link));
+		//frame.setVisible(true);
+		mensajesChat.insertComponent(label);
 	}
 	
 	private ImageIcon getImagen(String link) {
